@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -12,6 +13,8 @@ const ProfilePage = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">

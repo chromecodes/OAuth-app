@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
 
         const reqBody = await request.json();
         const { username, email, password } = reqBody;
-
         
         // check user exists
         const user = await User.findOne({ email });
@@ -56,7 +55,5 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
-
-
 
 connect()

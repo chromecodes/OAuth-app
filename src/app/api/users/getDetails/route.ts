@@ -4,31 +4,29 @@ import { NextResponse, NextRequest } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export async function POST(request: NextRequest) {
-    try{
-
-        const reqBody = await request.json();
-        const { email, password } = reqBody;
-
-        
-        // check user exists
+export async function GET(request: NextRequest) {
+    try {
+        //Check user exists
         const user = await User.findOne({ email });
         if(!user) return NextResponse.json({ error: "User doesn't exists" }, { status: 400 });
 
-        //check password
+        //Check password
         const validPassword = await bcryptjs.compare(password, user.password); // true or false;
 
         if(!validPassword) {
             return NextResponse.json({ error: "Invalid password" }, { status: 400 });
         }
-        // create cookie token for user
-        // token data 
+
+        //Create cookie token for user
+        //Token data 
+
         const tokenData = {
             _id: user._id,
             username: user.username,
             email: user.email
         }
-        // create token
+
+        //Create token
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!);
 
         const response = NextResponse.json({ 
