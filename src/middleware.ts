@@ -9,7 +9,6 @@ export function middleware(request: NextRequest) {
   let currentPath = request.nextUrl.pathname;
 
   let token = request.cookies.get("token")?.value || "";
-  console.log(token);
 
   let isPublicPath = currentPath === "/login" || currentPath === "/signup";
 

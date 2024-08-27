@@ -7,7 +7,6 @@ import { signIn, useSession } from "next-auth/react";
 
 const SignupPage = () => {
   const session = useSession();
-  console.log({ session });
 
   const router = useRouter();
   const [user, setUser] = React.useState({
@@ -18,7 +17,7 @@ const SignupPage = () => {
 
   const onSignup = async () => {
     try {
-      const res = await axios.post("/api/users/signup", user);
+      const res = await axios.post("/api/auth/signup", user);
       if (res.status === 200) {
         router.push("/profile");
       }
@@ -36,7 +35,7 @@ const SignupPage = () => {
           <div className="google-signup w-full border-y py-4 border-slate-200">
             <button
               className="w-full flex items-center justify-center border border-slate-100 gap-4 bg-white p-2 shadow-lg rounded-lg"
-              onClick={() => signIn("google", { redirectTo: "/dashboard" })}
+              onClick={() => signIn("google")}
             >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"

@@ -3,10 +3,12 @@ import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 export default function LoginPage() {
   const router = useRouter();
+  const session = useSession();
+
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -14,7 +16,7 @@ export default function LoginPage() {
 
   const onLogin = async () => {
     try {
-      const res = await axios.post("/api/users/login", user);
+      const res = await axios.post("/api/auth/login", user);
       if (res.status === 200) {
         router.push("/profile");
       }
