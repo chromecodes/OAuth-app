@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 
 const SignupPage = () => {
   const session = useSession();
@@ -37,9 +38,11 @@ const SignupPage = () => {
               className="w-full flex items-center justify-center border border-slate-100 gap-4 bg-white p-2 shadow-lg rounded-lg"
               onClick={() => signIn("google")}
             >
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
                 alt="logo"
+                width={24}
+                height={24}
               />
               Sign in with Google
             </button>

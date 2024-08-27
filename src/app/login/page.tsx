@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -36,9 +37,11 @@ export default function LoginPage() {
               className="w-full flex items-center justify-center border border-slate-100 gap-4 bg-white p-2 shadow-lg rounded-lg"
               onClick={() => signIn("google")}
             >
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
                 alt="logo"
+                width={24}
+                height={24}
               />
               Sign in with Google
             </button>
@@ -82,7 +85,7 @@ export default function LoginPage() {
             </button>
           </div>
           <div className="links mt-4">
-            <span>Don't have a account? </span>
+            <span>Don&apos;t have a account? </span>
             <Link className="underline text-amber-600" href="/signup">
               Signup
             </Link>
