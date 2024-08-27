@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const ProfilePage = () => {
   const router = useRouter();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({} as any);
   const [gotData, setGotData] = useState(false);
 
   const onLogout = async () => {
